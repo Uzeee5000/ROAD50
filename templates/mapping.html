@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Geospatial Analysis
+{% endblock %}
+
+{% block main %}
+
+    <form action="/mapping" method="post">
+        <div class="form-group">
+            <!-- Dropdown -->
+            <select name="symbol" class="form-select text-center mx-auto">
+                <option disabled selected value="">Select County</option>
+                {% for symbol in symbols %}
+                    <option value="{{symbol}}">{{symbol}}</option>
+                {% endfor %}
+            </select>
+        </div>
+         <div class="form-group">
+            <input autocomplete="off" class="form-control" name="coordinates" placeholder="Map central Coordinates: Please enter the city name for example 'Kingston Upon Hull'">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+{% endblock %}

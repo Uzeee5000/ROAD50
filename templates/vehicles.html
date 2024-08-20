@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Vehicles
+{% endblock %}
+
+{% block main %}
+<form action="/vehicles" method="post">
+    <div class="form-group">
+        <!-- Dropdown -->
+        <select name="vehicle_type" class="form-select text-center mx-auto" style="width: 700px;">
+            <option disabled selected value="">Select Vehicle Type</option>
+            {% for symbol in symbols %}
+                <option value="{{symbol}}">{{symbol}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit" name="submit" style="margin-top: 20px;">Submit</button>
+</form>
+
+
+{% endblock %}

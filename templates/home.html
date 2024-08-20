@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<h1>
+        Accident Statistics across the Great Britian in 2020
+    </h1>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <div style="text-align: center;">
+        <!-- Plot element -->
+        <div id="myPlot" style="width: 100%; max-width: 700px; margin: 0 auto;"></div>
+    </div>
+
+    <script>
+    const xArray = {{ xArray|tojson }};
+    const yArray = {{ yArray|tojson }};
+
+    const data = [{
+    x:xArray,
+    y:yArray,
+    type:"bar",
+    orientation:"v",
+    marker: {color:"rgba(0,0,255,0.6)"}
+    }];
+
+    const layout = {title:"Accidents Frequency by Day of the Week, with Sunday as the First Day"};
+
+    Plotly.newPlot("myPlot", data, layout);
+    </script>
+    <!-- Second Plot -->
+
+    <div style="text-align: center;">
+        <!-- Plot element -->
+        <div id="myPlot2" style="width: 100%; max-width: 1000px; margin: 0 auto;"></div>
+    </div>
+
+    <script>
+    const xArray2 = {{ xArray2|tojson }};
+    const yArray2 = {{ yArray2|tojson }};
+
+    const data2 = [{
+    x: xArray2,
+    y: yArray2,
+    type: "bar",
+    mode: "v",
+    marker: { color: "rgba(255,0,0,0.6)" }
+    }];
+
+    const layout2 = { title: "Accidents Frequency by Hour of the Day" };
+
+    Plotly.newPlot("myPlot2", data2, layout2);
+    </script>
+
+{% endblock %}
+
